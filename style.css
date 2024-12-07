@@ -347,10 +347,6 @@ h1 {
     margin-right: 10px;
 }
 
-.user-info{
-
-}
-
 .input-container {
     display: flex;
     margin: 0 auto;
@@ -571,9 +567,11 @@ span {
 }
 
 .signin_Modal_Button{
-    font-family: inherit;
+    font-family: inherit;   
+    margin-left: 100px;
 }
 
 .logout-button{
     font-family: inherit;
+    margin-left: 5px;
 }

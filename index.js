@@ -3,16 +3,15 @@ $(document).ready(function () {
 });
 
 document.getElementById('keywords').addEventListener('keydown', function (event) {
-    if (event.key === 'Enter' && !event.isComposing) { // IME 입력 상태 무시
-        event.preventDefault(); // 기본 동작(폼 제출) 방지
-        document.getElementById('send-button').click(); // 버튼 클릭 이벤트 트리거
+    if (event.key === 'Enter' && !event.isComposing) {
+        event.preventDefault(); 
+        document.getElementById('send-button').click(); 
     }
 });
 
 document.getElementById('input_key').addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         const api_key = document.getElementById("input_key").value;
-        console.log(api_key); // 값을 처리하거나 다른 방법으로 사용할 수 있음
     }
 });
 

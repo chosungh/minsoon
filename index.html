@@ -26,7 +26,7 @@
         </div>
 
         <div class="api-key-input">
-            <input type="text" placeholder="api_key 입력" style="padding: 8px;" id="input_key">
+            <input type="text" placeholder="api_key 입력" style="padding: 8px;" id="input_key" disabled>
         </div>
         <!-- 로그인 버튼 -->
         <button onclick="openModal('signin-modal')" class="signin_Modal_Button" id="signin_Modal_Button">로그인</button>
@@ -40,7 +40,7 @@
             <input type="email" id="signInEmail" placeholder="아이디" required>
             <input type="password" id="signInPassword" placeholder="비밀번호" required>
             <button type="submit" id="signInButton">로그인</button>
-            <p>아직 계정이 없으신가요? <a onclick="switchToSignup()">회원가입</a></p>
+            <p>아직 계정이 없으신가요? <a id="goToSignup" onclick="switchToSignup()">회원가입</a></p>
         </div>
 
         <!-- 회원가입 모달 -->
@@ -49,7 +49,7 @@
             <input type="email" id="signUpEmail" placeholder="아이디" required>
             <input type="password" id="signUpPassword" placeholder="비밀번호" required>
             <button type="submit" id="signUpButton">회원가입</button>
-            <p>이미 계정이 있으신가요? <a onclick="switchToSignin()">로그인</a></p>
+            <p>이미 계정이 있으신가요? <a id="goToSignin" onclick="switchToSignin()">로그인</a></p>
         </div>
 
         <div id="user-info" style="display: none;">
@@ -143,6 +143,7 @@
                     const username = user.email.split('@')[0];
                     document.getElementById('user-email').textContent = username;
                     document.getElementById('user-info').style.display = 'block';
+                    document.getElementById('input_key').disabled = false;
 
                     // 모달 닫기
                     closeModal();
@@ -166,7 +167,9 @@
                     document.getElementById('signin_Modal_Button').style.display = 'block';
                     const chatContainer = document.getElementById('chat-container');
                     chatContainer.innerHTML = '';
-                    $('#input-key').val("");
+                    document.getElementById('input_key').value = '';
+
+                    document.getElementById('input_key').disabled = true;
                 })
                 .catch((error) => {
                     console.error('로그아웃 실패:', error);
@@ -198,13 +201,13 @@
 
         // 로그인 폼과 회원가입 폼 전환
         document.getElementById('goToSignin').addEventListener('click', () => {
-            document.querySelector('form:first-of-type').style.display = 'none';  // 회원가입 폼 숨기기
-            document.querySelector('form:nth-of-type(2)').style.display = 'block'; // 로그인 폼 보이기
+            document.getElementById('signup-modal').style.display = 'none';  // 회원가입 폼 숨기기
+            document.getElementById('signin-modal').style.display = 'block'; // 로그인 폼 보이기
         });
 
         document.getElementById('goToSignup').addEventListener('click', () => {
-            document.querySelector('form:nth-of-type(2)').style.display = 'none';  // 로그인 폼 숨기기
-            document.querySelector('form:first-of-type').style.display = 'block'; // 회원가입 폼 보이기
+            document.getElementById('signin-modal').style.display = 'none';  // 로그인 폼 숨기기
+            document.getElementById('signup-modal').style.display = 'block'; // 회원가입 폼 보이기
         });
     </script>
 </body>
