@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="#">
+    <title>민순이</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="header">내 이름은 민순</h1>
+
+    <div class="themebgmToggle">
+        <audio id="themebgm" loop autoplay></audio>
+        <div>
+            <span>배경음악</span>
+            <label>
+                <input type="checkbox" onchange="playMusic()" id="bgmToggle" checked>
+            </label>
+            <span class="readSpan">읽어주기</span>
+            <label>
+                <input type="checkbox" onchange="" id="readToggle" checked class="readToggle">
+            </label>
+        </div>
+
+        <div class="api-key-input">
+            <input type="text" placeholder="api_key 입력" style="padding: 8px;" id="input_key">
+        </div>
+        <!-- 로그인 버튼 -->
+        <button onclick="openModal('signin-modal')" class="signin_Modal_Button" id="signin_Modal_Button">로그인</button>
+
+        <!-- 모달 배경 -->
+        <div class="modal-overlay" id="modal-overlay" onclick="closeModal()"></div>
+
+        <!-- 로그인 모달 -->
+        <div class="modal" id="signin-modal">
+            <h1 id="signin_h1">로그인</h1>
+            <input type="email" id="signInEmail" placeholder="아이디" required>
+            <input type="password" id="signInPassword" placeholder="비밀번호" required>
+            <button type="submit" id="signInButton">로그인</button>
+            <p>아직 계정이 없으신가요? <a onclick="switchToSignup()">회원가입</a></p>
+        </div>
+
+        <!-- 회원가입 모달 -->
+        <div class="modal hidden" id="signup-modal">
+            <h1>회원가입</h1>
+            <input type="email" id="signUpEmail" placeholder="아이디" required>
+            <input type="password" id="signUpPassword" placeholder="비밀번호" required>
+            <button type="submit" id="signUpButton">회원가입</button>
+            <p>이미 계정이 있으신가요? <a onclick="switchToSignin()">로그인</a></p>
+        </div>
+
+        <div id="user-info" style="display: none;">
+            <span>ID : <span id="user-email"></span></span>
+            <button id="logout-button" class="logout-button">로그아웃</button>
+        </div>
+
+    </div>
+
+
+
+    <!-- 스타일 선택 -->
+    <div class="select-style">
+        <label for="style">대화 스타일 선택</label>
+        <select id="style">
+            <option value="basic">기본</option>
+            <option value="horror">공포</option>
+            <option value="friendly">개구쟁이</option>
+            <option value="christmas">크리스마스</option>
+        </select>
+    </div>
+
+    <div id="chat-container"></div>
+
+    <div class="input-container">
+        <input type="text" id="keywords" placeholder="무엇이든 질문해보세요..." required />
+        <button id="send-button" onclick="chatGPT()" class="send-button">입력</button>
+    </div>
+
+    <div id="loading">
+        <img src="https://studentrights.sen.go.kr/images/common/loading.gif" />
+    </div>
+
+    <script src="index.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB-zDW4xe-DnIDLyQTJ1klMvZ80u4QK-vs",
+            authDomain: "webtest123-e7ff7.firebaseapp.com",
+            projectId: "webtest123-e7ff7",
+            storageBucket: "webtest123-e7ff7.firebasestorage.app",
+            messagingSenderId: "467185443350",
+            appId: "1:467185443350:web:1754170e9e84cf5f2f4b37",
+            measurementId: "G-TS06METZFG"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);  // auth 객체를 앱과 연결하여 초기화
+
+        // 회원가입 버튼 클릭 이벤트
+        document.getElementById('signUpButton').addEventListener('click', (event) => {
+            event.preventDefault(); // 기본 폼 제출 방지
+            const signUpEmail = document.getElementById('signUpEmail').value;
+            const signUpPassword = document.getElementById('signUpPassword').value;
+
+            createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    alert('회원가입 성공!');
+                    console.log(user);
+                    switchToSignin();
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(`회원가입 실패: ${errorMessage}`);
+                });
+        });
+
+        // 로그인 버튼 클릭 이벤트
+        document.getElementById('signInButton').addEventListener('click', (event) => {
+            event.preventDefault(); // 기본 폼 제출 방지
+            const signInEmail = document.getElementById('signInEmail').value;
+            const signInPassword = document.getElementById('signInPassword').value;
+
+            signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+                .then((userCredential) => {
+                    // 로그인 성공
+                    const user = userCredential.user;
+                    alert('로그인 성공!');
+                    console.log(user);
+
+                    // 사용자 이메일에서 @ 앞부분만 추출
+                    const username = user.email.split('@')[0];
+                    document.getElementById('user-email').textContent = username;
+                    document.getElementById('user-info').style.display = 'block';
+
+                    // 모달 닫기
+                    closeModal();
+                    hideSigninButton();
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(`로그인 실패: ${errorMessage}`);
+                });
+        });
+
+        // 로그아웃 버튼 클릭 이벤트
+        document.getElementById('logout-button').addEventListener('click', () => {
+            signOut(auth)
+                .then(() => {
+                    alert('로그아웃 성공!');
+
+                    // UI 업데이트
+                    document.getElementById('user-info').style.display = 'none';
+                    document.getElementById('signin_Modal_Button').style.display = 'block';
+                    const chatContainer = document.getElementById('chat-container');
+                    chatContainer.innerHTML = '';
+                    $('#input-key').val("");
+                })
+                .catch((error) => {
+                    console.error('로그아웃 실패:', error);
+                });
+        });
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // 로그인 상태
+                const username = user.email.split('@')[0];
+                document.getElementById('user-email').textContent = username;
+                document.getElementById('user-info').style.display = 'block';
+                document.getElementById('signin_Modal_Button').style.display = 'none';
+            } else {
+                // 로그아웃 상태
+                document.getElementById('user-info').style.display = 'none';
+                document.getElementById('signin_Modal_Button').style.display = 'block';
+            }
+        });
+
+        function hideSigninButton() {
+            document.getElementById('signin_Modal_Button').style.display = 'none';
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').style.display = 'none';
+            document.getElementById('signin-modal').style.display = 'none';
+        }
+
+        // 로그인 폼과 회원가입 폼 전환
+        document.getElementById('goToSignin').addEventListener('click', () => {
+            document.querySelector('form:first-of-type').style.display = 'none';  // 회원가입 폼 숨기기
+            document.querySelector('form:nth-of-type(2)').style.display = 'block'; // 로그인 폼 보이기
+        });
+
+        document.getElementById('goToSignup').addEventListener('click', () => {
+            document.querySelector('form:nth-of-type(2)').style.display = 'none';  // 로그인 폼 숨기기
+            document.querySelector('form:first-of-type').style.display = 'block'; // 회원가입 폼 보이기
+        });
+    </script>
+</body>
+
+</html>

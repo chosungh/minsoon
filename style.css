@@ -1,0 +1,579 @@
+@font-face {
+    font-family: 'HSYuji-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'YoonChildfundkoreaMinGuk';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/YoonChildfundkoreaMinGuk.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'KimjungchulScript-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulScript-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 공포 테마 */
+body.horror .send-button{
+    font-family: 'YoonChildfundkoreaMinGuk';
+}
+
+body.horror .logout-button {
+    margin-left: 10px;
+    font-family: 'YoonChildfundkoreaMinGuk';
+}
+
+body.horror .modal p a {
+    color: rgb(123, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body.horror .modal p a:hover {
+    text-decoration: underline;
+}
+
+body.horror .signInButton{
+    font-family: inherit;
+}
+
+body.horror .header{
+    color: red;
+    font-family: 'YoonChildfundkoreaMinGuk';
+}
+body.horror h1 {
+    color: rgb(123, 0, 0);
+}
+
+body.horror .signin_Modal_Button {
+    font-family: 'YoonChildfundkoreaMinGuk';
+}
+
+body.horror,
+body.horror #chat-container {
+    background-color: black;
+}
+
+body.horror [type="checkbox"]:checked {
+    background-color: red;
+    border-color: red;
+}
+
+body.horror .select-style {
+    font-family: 'YoonChildfundkoreaMinGuk';
+    color: red;
+}
+
+body.horror .user-message {
+    font-family: 'YoonChildfundkoreaMinGuk';
+    background-color: #ffffff;
+}
+
+body.horror span {
+    font-family: 'YoonChildfundkoreaMinGuk';
+    color: red;
+}
+
+body.horror [type="checkbox"]:checked::before {
+    background-color: black;
+    left: 1em;
+}
+
+
+body.horror .bot-message {
+    background-color: #000000;
+    font-family: 'HSYuji-Regular';
+    color: red;
+    border: 1px solid red;
+}
+
+body.horror button {
+    background-color: rgb(123, 0, 0);
+}
+
+body.horror button:hover {
+    background-color: rgb(97, 0, 0);
+}
+
+/* 개구쟁이 테마 */
+body.friendly .logout-button {
+    margin-left: 10px;
+    font-family: 'HSYuji-Regular';
+}
+
+body.friendly .send-button{
+    font-family: 'HSYuji-Regular';
+}
+
+body.friendly .modal p a {
+    color: #b15791;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body.friendly .modal p a:hover {
+    text-decoration: underline;
+}
+
+body.friendly .signInButton{
+    font-family: inherit;
+}
+
+body.friendly .header{
+    color: #fff78d;
+    font-family: 'HSYuji-Regular';
+}
+body.friendly h1 {
+    color: rgb(123, 0, 0);
+}
+
+body.friendly .signin_Modal_Button {
+    font-family: 'HSYuji-Regular';
+}
+
+body.friendly .select-style {
+    font-family: 'HSYuji-Regular';
+}
+
+body.friendly [type="checkbox"]:checked {
+    background-color: #fff78d;
+    border-color: #fff78d;
+}
+
+body.friendly [type="checkbox"]:checked::before {
+    background-color: #3db370;
+    left: 1em;
+}
+
+body.friendly span {
+    font-family: 'HSYuji-Regular';
+    color: black;
+}
+
+body.friendly,
+body.friendly #chat-container {
+    background-color: #3db370;
+}
+
+body.friendly h1 {
+    color: #3db370;
+}
+
+body.friendly .user-message {
+    font-family: 'HSYuji-Regular';
+    background-color: #fff78d;
+}
+
+body.friendly .bot-message {
+    background-color: #3db370;
+    font-family: 'HSYuji-Regular';
+    color: white;
+    border: 1px solid white;
+}
+
+body.friendly button {
+    background-color: #c866a4;
+}
+
+body.friendly button:hover {
+    background-color: #b15791;
+}
+
+body.christmas,
+body.christmas #chat-container {
+    background-color: #034f1b;
+    color: #ceac5c;
+}
+
+/* 크리스마스 테마 */
+body.christmas .logout-button {
+    margin-left: 10px;
+    font-family: 'KimjungchulScript-Bold';
+}
+
+body.christmas .send-button{
+    font-family: 'KimjungchulScript-Bold';
+}
+
+body.christmas .modal p{
+    color: #000000;
+}
+
+body.christmas .modal p a {
+    color: #ceac5c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body.christmas .modal p a:hover {
+    text-decoration: underline;
+}
+
+body.christmas .signInButton{
+    font-family: inherit;
+}
+
+body.christmas .header{
+    color: #ceac5c;
+    font-family: 'KimjungchulScript-Bold';
+}
+body.christmas h1 {
+    color: #ceac5c;
+}
+
+body.christmas .signin_Modal_Button {
+    font-family: 'KimjungchulScript-Bold';
+}
+
+body.christmas .bot-message {
+    background-color: #034f1b;
+    font-family: 'KimjungchulScript-Bold';
+}
+
+body.christmas [type="checkbox"]:checked {
+    background-color: #e6dcb1;
+    border-color: #e6dcb1;
+}
+
+body.christmas span {
+    font-family: 'KimjungchulScript-Bold';
+    color: #e6dcb1;
+}
+
+body.christmas [type="checkbox"]:checked::before {
+    background-color: #034f1b;
+    left: 1em;
+}
+
+body.christmas .select-style {
+    font-family: 'KimjungchulScript-Bold';
+    color: #e6dcb1;
+}
+
+body.christmas .bot-message {
+    font-family: 'KimjungchulScript-Bold';
+    border: 1px solid #ceac5c;
+}
+
+body.christmas .user-message {
+    font-family: 'KimjungchulScript-Bold';
+    background-color: white;
+    color: black;
+}
+
+
+body.christmas button {
+    background-color: #7e121d;
+}
+
+body.christmas button:hover {
+    background-color: #660f16;
+}
+
+
+/* 기본 테마 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.select-style {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#chat-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    overflow-y: auto;
+    height: 500px;
+    margin-bottom: 40px;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.user-message {
+    padding: 10px;
+    background-color: #d1e7ff;
+    border-radius: 10px;
+    max-width: 60%;
+    width: fit-content;
+    margin-left: auto;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.bot-message {
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 60%;
+    width: fit-content;
+    margin-right: auto;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.themebgmToggle {
+    justify-content: space-between;
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.playButton {
+    margin-right: 10px;
+}
+
+.user-info{
+
+}
+
+.input-container {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+#keywords {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: auto;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    z-index: 1000;
+}
+
+#loading img {
+    margin-top: 200px;
+}
+
+select {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+[type="checkbox"] {
+    appearance: none;
+}
+
+[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 1.25em;
+    width: 2.25em;
+    height: 1.25em;
+}
+
+[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    transform: scale(0.8);
+    background-color: gray;
+    transition: left 250ms linear;
+}
+
+[type="checkbox"]:checked::before {
+    background-color: white;
+    left: 1em;
+}
+
+[type="checkbox"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+[type="checkbox"]:enabled:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+}
+
+[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    transform: scale(0.8);
+    background-color: gray;
+    transition: left 250ms linear;
+}
+
+span {
+    color: black;
+}
+
+.readSpan {
+    margin-left: 10px;
+}
+
+/* 모달 배경 스타일 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* 모달 창 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1010;
+}
+
+.modal h1 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.modal input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal button:hover {
+    background: #0056b3;
+}
+
+.modal p {
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.modal p a {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal p a:hover {
+    text-decoration: underline;
+}
+
+/* 숨김 처리 */
+.hidden {
+    display: none;
+}
+
+.modal input {
+    width: 330px;
+
+}
+
+
+
+.api-key-input {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 460px;
+}
+
+
+#input_key {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: auto;
+}
+
+.signin_Modal_Button{
+    font-family: inherit;
+}
+
+.logout-button{
+    font-family: inherit;
+}
